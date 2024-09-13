@@ -1,10 +1,12 @@
 export const Header = () => {
   return (
-    <>
-      <p>RoatG</p>
-      <button>products</button>
-      <button>contact us</button>
-      <button>LOG IN</button>
-    </>
+    <header>
+      <div className="logo">RoatG</div>
+      <div className="header-right">
+        <input type="text" placeholder="Search..." />
+        <a href="#">Contact Us</a>
+        <a href="#">LOG IN</a>
+      </div>
+    </header>
   );
 };
