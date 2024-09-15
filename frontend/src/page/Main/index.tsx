@@ -1,5 +1,6 @@
 import { Header } from "@components/layout/header";
 import "./main.css";
+import { GoSearch } from "react-icons/go";
 
 export const MainPage = () => {
   return (
@@ -14,6 +15,9 @@ export const MainPage = () => {
         </p>
         <div className="search-container">
           <input type="text" placeholder="Search APP you want" />
+          <button>
+            <GoSearch />
+          </button>
         </div>
         <div className="features">
           <div className="feature">
