@@ -26,5 +26,5 @@
       "@components/*": ["src/components/*"] //@components로 시작하면 components/ 하위 디렉토리를 의미한다.
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/index.tsx"]
 }
