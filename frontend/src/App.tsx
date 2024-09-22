@@ -1,9 +1,7 @@
-import "@src/App.css";
-// import { MainPage } from "./page/Main";
-import { Detail } from "./page/Detail";
+import { Routes } from "@src/routes";
 
 function App() {
-  return <Detail></Detail>;
+  return <Routes />;
 }
 
 export default App;

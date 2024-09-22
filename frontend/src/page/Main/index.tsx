@@ -1,6 +1,8 @@
 import { Header } from "@components/layout/header";
 import "./main.css";
 import { GoSearch } from "react-icons/go";
+import { Link } from "react-router-dom";
+import { RouterPath } from "@src/routes/path";
 
 export const MainPage = () => {
   return (
@@ -16,7 +18,9 @@ export const MainPage = () => {
         <div className="search-container">
           <input type="text" placeholder="Search APP you want" />
           <button>
-            <GoSearch />
+            <Link to={RouterPath.detail}>
+              <GoSearch />
+            </Link>
           </button>
         </div>
         <div className="features">
