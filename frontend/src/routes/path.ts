@@ -1,5 +1,8 @@
 export const RouterPath = {
   root: "/",
   home: "/",
-  detail: "/detail",
+  appInfo: "/appInfo",
+  updateHistory: "/updateHistory",
+  topic: "/topic",
+  sentiment: "/sentiment",
 };

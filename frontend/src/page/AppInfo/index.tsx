@@ -1,7 +1,7 @@
 import { Header } from "@components/layout/header";
 import "./detail.css";
 
-export const Detail = () => {
+export const AppInfoPage = () => {
   return (
     <>
       <div className="container">

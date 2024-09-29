@@ -18,7 +18,7 @@ export const MainPage = () => {
         <div className="search-container">
           <input type="text" placeholder="Search APP you want" />
           <button>
-            <Link to={RouterPath.detail}>
+            <Link to={RouterPath.appInfo}>
               <GoSearch />
             </Link>
           </button>
