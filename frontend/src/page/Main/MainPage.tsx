@@ -4,7 +4,7 @@ import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { RouterPath } from "@src/routes/path";
 
-export const MainPage = () => {
+export default function MainPage() {
   return (
     <div className="App">
       <Header />
@@ -44,4 +44,4 @@ export const MainPage = () => {
       </main>
     </div>
   );
-};
+}
