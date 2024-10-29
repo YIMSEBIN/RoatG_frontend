@@ -7,9 +7,10 @@ module.exports = {
     es2020: true, // ECMAScript 2020
   },
   extends: [
-    "eslint:recommended", // 기본적인 ESLint 규칙
-    "plugin:@typescript-eslint/recommended", // TypeScript 관련 규칙
-    "plugin:react-hooks/recommended", // React Hooks 규칙
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"], // 무시할 파일 또는 디렉토리
   parser: "@typescript-eslint/parser", // TypeScript 파서 설정
