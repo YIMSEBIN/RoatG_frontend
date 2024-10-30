@@ -1,20 +1,14 @@
-import styled from "@emotion/styled";
-import React from "react";
+import React, { HTMLAttributes } from "react";
 
 type Props = {
   color?: string;
+  bold?: boolean;
+  size?: string;
   children: React.ReactNode;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
-export default function Typo({ color = "#000", children, ...rest }: Props) {
-  return (
-    <TypoContainer color={color} {...rest}>
-      {children}
-    </TypoContainer>
-  );
+export default function Typo({ color = "#000", bold, size, children, style }: Props) {
+  const fontWeight = bold ? "SpoqaHanSansNeoBold" : "SpoqaHanSansNeoLight";
+
+  return <div style={{ fontFamily: fontWeight, color: color, fontSize: size, ...style }}>{children}</div>;
 }
-
-const TypoContainer = styled.div<Omit<Props, "style, children">>`
-  font-family: "SpoqaHanSansNeoLight";
-  color: ${({ color }) => color};
-`;

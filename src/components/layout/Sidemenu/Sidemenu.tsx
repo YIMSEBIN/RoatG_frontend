@@ -19,7 +19,6 @@ export default function Sidemenu({ children, ...rest }: { children?: React.React
         <Tab label="Dashboard" {...a11yProps(3)} />
       </SideTaps>
       <TabPanel value={value} index={0}>
-        App Info
         {children}
       </TabPanel>
       <TabPanel value={value} index={1}>
