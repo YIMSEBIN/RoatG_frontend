@@ -2,8 +2,11 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import styled from "@emotion/styled";
+import { AppInfoPage } from "@src/page/AppDetail/AppInfo/AppInfoPage";
+import { UpdateHistoryPage } from "@src/page/AppDetail/UpdateHistory/UpdateHistoryPage";
+import { TopicPage } from "@src/page/AppDetail/Topic/TopicPage";
 
-export default function Sidemenu({ children, ...rest }: { children?: React.ReactNode }) {
+export default function Sidemenu({ ...rest }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -19,13 +22,13 @@ export default function Sidemenu({ children, ...rest }: { children?: React.React
         <Tab label="Dashboard" {...a11yProps(3)} />
       </SideTaps>
       <TabPanel value={value} index={0}>
-        {children}
+        <AppInfoPage />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Update History
+        <UpdateHistoryPage />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Review Topic
+        <TopicPage />
       </TabPanel>
       <TabPanel value={value} index={3}>
         Dashboard
