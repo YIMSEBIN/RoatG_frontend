@@ -2,12 +2,12 @@ import "./main.css";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { RouterPath } from "@src/routes/path";
-import Layout from "@src/components/layout/Layout";
+import Header from "@src/components/layout/Header/Header";
 
 export default function MainPage() {
   return (
     <div className="App">
-      <Layout>
+      <Header />
         <main>
           <h1>Reviewest of all the games</h1>
           <p className="description">
@@ -42,7 +42,6 @@ export default function MainPage() {
             </div>
           </div>
         </main>
-      </Layout>
     </div>
   );
 }
