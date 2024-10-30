@@ -1,24 +1,35 @@
-import { AppBar, Toolbar, Typography, Button, InputBase, styled, alpha } from "@mui/material";
+import { AppBar, Toolbar, Button, InputBase, styled, alpha } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import LOGO from "@assets/images/LOGO.png";
 
 export default function Header({ ...rest }) {
   return (
     <MyAppBar position="static" elevation={0} {...rest}>
       <MyToolbar>
-        <Typography variant="h6" component="div">
-          RoatG
-        </Typography>
+        <img src={LOGO} alt="Logo" style={{ height: 20, cursor: "pointer" }} />
         <Flex>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder="search" inputProps={{ "aria-label": "search" }} />
-          </Search>
-          <Button color="inherit">Contact Us</Button>
-          <Button variant="outlined" color="inherit">
-            Log In
-          </Button>
+          <ItemWrapper>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase placeholder="search" inputProps={{ "aria-label": "search" }} />
+            </Search>
+          </ItemWrapper>
+          <ItemWrapper>
+            <Button color="inherit" style={{ fontWeight: "500" }}>
+              Contact Us
+            </Button>
+          </ItemWrapper>
+          <ItemWrapper>
+            <Button
+              variant="outlined"
+              color="inherit"
+              style={{ border: "2px solid", borderRadius: "30px", boxShadow: "2px 2px #eee" }}
+            >
+              Log In
+            </Button>
+          </ItemWrapper>
         </Flex>
       </MyToolbar>
     </MyAppBar>
@@ -40,6 +51,10 @@ const MyToolbar = styled(Toolbar)(() => ({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
+}));
+
+const ItemWrapper = styled("div")(() => ({
+  marginRight: "10px",
 }));
 
 const Search = styled("div")(({ theme }) => ({
