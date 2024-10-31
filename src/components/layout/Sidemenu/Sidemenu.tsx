@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { AppInfoPage } from "@src/page/AppDetail/AppInfo/AppInfoPage";
 import { UpdateHistoryPage } from "@src/page/AppDetail/UpdateHistory/UpdateHistoryPage";
 import { TopicPage } from "@src/page/AppDetail/Topic/TopicPage";
+import { SentimentPage } from "@src/page/AppDetail/Sentiment/SentimentPage";
 
 export default function Sidemenu({ ...rest }) {
   const [value, setValue] = React.useState(0);
@@ -31,7 +32,7 @@ export default function Sidemenu({ ...rest }) {
         <TopicPage />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Dashboard
+        <SentimentPage />
       </TabPanel>
     </Wrapper>
   );

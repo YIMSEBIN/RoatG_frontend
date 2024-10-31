@@ -1,18 +1,15 @@
 import Typo from "@src/components/common/Typo/Typo";
 import AppInfoCard from "./AppInfoCard";
-import styled from "@emotion/styled";
+import UpdateCard from "../../../components/feature/Update/UpdateCard";
 
 export const AppInfoPage = () => {
   return (
     <div>
+      <AppInfoCard />
       <Typo bold style={{ margin: "40px 0 0 30px" }}>
-        App Information
+        Release Note
       </Typo>
-      <CardSection>
-        <AppInfoCard />
-      </CardSection>
+      <UpdateCard />
     </div>
   );
 };
-
-const CardSection = styled("div")(() => ({ display: "flex", alignContent: "center" }));
