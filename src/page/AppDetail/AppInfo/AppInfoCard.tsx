@@ -3,12 +3,17 @@ import Typo from "@src/components/common/Typo/Typo";
 import Image from "@src/components/common/Image/Image";
 import { Divider } from "@mui/material";
 import styled from "@emotion/styled";
+import { AppInfoProps } from "./AppInfoPage";
 
-export default function AppInfoCard() {
+type Props = {
+  appInfoData: AppInfoProps;
+};
+
+export default function AppInfoCard({ appInfoData }: Props) {
   return (
     <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
       <Image
-        url="https://i.ibb.co/8MqN8P1/image-28.png"
+        url={appInfoData.banner}
         size={{
           width: "150px",
           height: "150px",
@@ -19,25 +24,29 @@ export default function AppInfoCard() {
       />
       <TextWrapper>
         <TitleWrapper>
-          <Typo size="12px">DEVSISTERS</Typo>
+          <Typo size="12px">{appInfoData.publisher}</Typo>
           <Typo bold size="24px">
-            쿠키런: 오븐브레이크
+            {appInfoData.name}
           </Typo>
-          <Typo size="12px">최근 업데이트 | 2024.09.10</Typo>
+          <Typo size="12px">최근 업데이트 | {appInfoData.recentUpdate.toString()}</Typo>
         </TitleWrapper>
         <Divider />
         <ContentWrapper>
           <ScoreWrapper>
             <Typo size="12px">PlayStore 평균 별점</Typo>
-            <Typo size="20px">4.1</Typo>
+            <Typo size="20px">{appInfoData.ratingAvg}</Typo>
           </ScoreWrapper>
           <ScoreWrapper>
             <Typo size="12px">총 리뷰 수</Typo>
-            <Typo size="20px">101만개</Typo>
+            <Typo size="20px">{appInfoData.reviewCount}개</Typo>
           </ScoreWrapper>
           <ScoreWrapper>
             <Typo size="12px">다운로드 수</Typo>
-            <Typo size="20px">1,000만+</Typo>
+            <Typo size="20px">{appInfoData.downloadCount}</Typo>
+          </ScoreWrapper>
+          <ScoreWrapper>
+            <Typo size="12px">카테고리</Typo>
+            <Typo size="20px">{appInfoData.category}</Typo>
           </ScoreWrapper>
         </ContentWrapper>
       </TextWrapper>
