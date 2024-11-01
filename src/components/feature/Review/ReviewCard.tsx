@@ -3,6 +3,7 @@ import Card from "@src/components/common/Card/Card";
 import { Pagination, styled } from "@mui/material";
 import { useState } from "react";
 import Typo from "@src/components/common/Typo/Typo";
+import { useGetReviews } from "@src/apis/hooks/useGetReviews";
 
 export type ReviewDataProps = {
   reviewContent: string;
@@ -16,23 +17,9 @@ const DEFAULT_PAGE = 1;
 export default function ReviewCard() {
   const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
 
-  // const appId = 1;
-  // const month = 8;
-  // const { data: reviewDataList } = useGetReviews({ page: currentPage, size: 10, appId, month });
-  const reviewDataList = [
-    {
-      reviewContent: "이건 댓글입니다.",
-      reviewDate: new Date("2022-3-24"),
-      reviewUser: "홍길동",
-      reviewStar: 3,
-    },
-    {
-      reviewContent: "이건 댓글입니다........................",
-      reviewDate: new Date("2022-3-2"),
-      reviewUser: "홍길동2",
-      reviewStar: 3,
-    },
-  ];
+  const appId = 1;
+  const month = 1;
+  const { data: reviewDataList } = useGetReviews({ page: currentPage, size: 2, appId, month });
 
   const handlePageChange = (e: React.ChangeEvent<unknown>) => {
     const input = e.target as HTMLElement;
@@ -42,9 +29,10 @@ export default function ReviewCard() {
 
   return (
     <Card style={{ margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
-      {reviewDataList.map((reviewData) => (
-        <Item key={reviewData.reviewUser} reviewData={reviewData} />
-      ))}
+      {reviewDataList &&
+        reviewDataList.map((reviewData: ReviewDataProps) => (
+          <Item key={reviewData.reviewUser} reviewData={reviewData} />
+        ))}
       {reviewDataList && (
         <Pagination page={currentPage} count={LAST_PAGE} defaultPage={DEFAULT_PAGE} onChange={handlePageChange} />
       )}
