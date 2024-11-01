@@ -13,7 +13,6 @@ export const getReviewsPath = ({ page = 0, size = 2, appId, month }: RequestPara
   const params = new URLSearchParams();
   params.append("page", String(page));
   params.append("size", String(size));
-  const path = `${getDynamicAPIPath.topicChartReview(appId, month)}?${params.toString}`;
   return `${getDynamicAPIPath.topicChartReview(appId, month)}?${params.toString}`;
 };
 const getReviews = async (params: RequestParams) => {

@@ -19,7 +19,8 @@ export default function ReviewCard() {
 
   const appId = 1;
   const month = 1;
-  const { data: reviewDataList } = useGetReviews({ page: currentPage, size: 2, appId, month });
+  const { data: reviewList } = useGetReviews({ page: currentPage, size: 2, appId, month });
+  const reviewListData: ReviewDataProps[] = reviewList;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>) => {
     const input = e.target as HTMLElement;
@@ -29,11 +30,11 @@ export default function ReviewCard() {
 
   return (
     <Card style={{ margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
-      {reviewDataList &&
-        reviewDataList.map((reviewData: ReviewDataProps) => (
+      {reviewListData &&
+        reviewListData.map((reviewData: ReviewDataProps) => (
           <Item key={reviewData.reviewUser} reviewData={reviewData} />
         ))}
-      {reviewDataList && (
+      {reviewListData && (
         <Pagination page={currentPage} count={LAST_PAGE} defaultPage={DEFAULT_PAGE} onChange={handlePageChange} />
       )}
     </Card>
