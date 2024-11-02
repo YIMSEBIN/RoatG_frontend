@@ -6,5 +6,5 @@ interface Props<T> {
 }
 
 export default function List<T>({ items, renderItem }: Props<T>) {
-  return <>{items.map(renderItem)}</>;
+  return <>{items && items.map(renderItem)}</>;
 }
