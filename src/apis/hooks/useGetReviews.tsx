@@ -6,14 +6,17 @@ type RequestParams = {
   page?: number;
   size?: number;
   appId: number;
-  month: number;
+  date: string;
+  topicId: number;
 };
 
-export const getReviewsPath = ({ page = 0, size = 2, appId, month }: RequestParams) => {
+export const getReviewsPath = ({ page = 0, size = 3, appId = 1, date = "2024-1", topicId = 1 }: RequestParams) => {
+  const url = getDynamicAPIPath.topicChartReview(appId, date, topicId);
   const params = new URLSearchParams();
   params.append("page", String(page));
   params.append("size", String(size));
-  return `${getDynamicAPIPath.topicChartReview(appId, month)}?${params.toString}`;
+
+  return `${url}?${params.toString()}`;
 };
 const getReviews = async (params: RequestParams) => {
   const res = await clientInstance.get(getReviewsPath(params));

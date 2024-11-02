@@ -22,19 +22,25 @@ export default function ReviewCard() {
   const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
 
   const appId = 1;
-  const month = 1;
-  const { data: reviewList, isLoading: isLoading } = useGetReviews({ page: currentPage, size: 2, appId, month });
-  const reviewListData: ReviewDataProps[] = reviewList;
+  const date = "2024-1";
+
+  const { data: reviewData = [], isLoading: isLoading } = useGetReviews({
+    page: currentPage,
+    size: 3,
+    appId,
+    date,
+    topicId: 1,
+  });
+
+  const reviewListData: ReviewDataProps[] = reviewData;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>) => {
     const input = e.target as HTMLElement;
     const currentPageIndex = Number(input.innerText);
     setCurrentPage(currentPageIndex);
   };
-  console.log(isLoading);
-  if (isLoading) {
-    return <Loading />;
-  } else {
+
+  if (Array.isArray(reviewListData) && !isLoading) {
     return (
       reviewListData && (
         <Card style={{ margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
@@ -46,6 +52,8 @@ export default function ReviewCard() {
         </Card>
       )
     );
+  } else {
+    return <Loading />;
   }
 }
 
