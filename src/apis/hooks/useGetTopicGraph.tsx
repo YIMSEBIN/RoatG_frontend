@@ -2,14 +2,21 @@ import { useQuery } from "@tanstack/react-query";
 import { clientInstance } from "../instance";
 import { getDynamicAPIPath } from "../apiPath";
 
-export const getTopicChartPath = (app_id: number) => `${getDynamicAPIPath.topicChart(app_id)}`;
-const getTopicChart = async (app_id: number) => {
-  const res = await clientInstance.get(getTopicChartPath(app_id));
+type RequestParams = {
+  appId: number;
+  sentiment: "pos" | "neg";
+  date: string;
+};
+
+export const getTopicChartPath = ({ appId, sentiment, date }: RequestParams) =>
+  `${getDynamicAPIPath.topicChart(appId, sentiment, date)}`;
+const getTopicChart = async (param: RequestParams) => {
+  const res = await clientInstance.get(getTopicChartPath(param));
   return res.data;
 };
 
-export const useGetTopicChart = (app_id: number) =>
+export const useGetTopicChart = (param: RequestParams) =>
   useQuery({
     queryKey: [getTopicChartPath, "getTopicChart"],
-    queryFn: () => getTopicChart(app_id),
+    queryFn: () => getTopicChart(param),
   });

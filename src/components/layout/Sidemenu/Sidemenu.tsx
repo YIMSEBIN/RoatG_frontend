@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { AppInfoPage } from "@src/page/AppDetail/AppInfo/AppInfoPage";
 import { TopicPage } from "@src/page/AppDetail/Topic/TopicPage";
 import { SentimentPage } from "@src/page/AppDetail/Sentiment/SentimentPage";
+import Dropdown from "@src/components/feature/Dropdown/Dropdown";
 
 export default function Sidemenu({ ...rest }) {
   const [value, setValue] = React.useState(0);
@@ -19,6 +20,7 @@ export default function Sidemenu({ ...rest }) {
         <Tab label="App Info" {...a11yProps(0)} />
         <Tab label="Review Topic" {...a11yProps(1)} />
         <Tab label="Sentiment Chart" {...a11yProps(2)} />
+        <Dropdown />
       </SideTaps>
       <TabPanel value={value} index={0}>
         <AppInfoPage />

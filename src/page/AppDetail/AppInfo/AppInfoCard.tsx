@@ -11,15 +11,15 @@ type Props = {
 
 export default function AppInfoCard({ appInfoData }: Props) {
   return (
-    <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
+    <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px" }}>
       <Image
         url={appInfoData.banner}
-        size={{
-          width: "150px",
-          height: "150px",
-        }}
         style={{
           marginRight: "20px",
+        }}
+        size={{
+          width: "200px",
+          height: "",
         }}
       />
       <TextWrapper>

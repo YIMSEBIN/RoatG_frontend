@@ -1,6 +1,7 @@
 import { Bar } from "react-chartjs-2";
-import "chart.js/auto"; // ADD THIS
+import "chart.js/auto";
 import List from "@src/components/common/List/List";
+import { TopicChartProps } from "@src/types";
 
 const options = {
   responsive: false,
@@ -17,12 +18,12 @@ const options = {
   },
 };
 
-type TopicChartProps = {
-  topicContent: string;
-  topicCount: number;
-};
-
 export default function GraphList(props: { topicChartListData: TopicChartProps[] }) {
+  // const chartDataList = props.topicChartListData.map((data) => {
+  //   return {
+  //     labels: data.representationWordAsList
+  //   }
+  // })
   const data = {
     labels: ["Red", "Blue", "Yellow", "Green"],
     datasets: [

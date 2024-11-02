@@ -2,15 +2,11 @@ import Card from "@src/components/common/Card/Card";
 import GraphList from "./Graph";
 import { useParams } from "react-router-dom";
 import { useGetTopicChart } from "@src/apis/hooks/useGetTopicGraph";
-
-type TopicChartProps = {
-  topicContent: string;
-  topicCount: number;
-};
+import { TopicChartProps } from "@src/types";
 
 export default function GraphCard() {
   const { appId } = useParams();
-  const { data: topicChart } = useGetTopicChart(Number(appId));
+  const { data: topicChart } = useGetTopicChart({ appId: Number(appId), sentiment: "pos", date: "2024-1" });
   const topicChartListData: TopicChartProps[] = topicChart;
 
   return (

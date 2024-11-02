@@ -5,6 +5,7 @@ import { useGetAppInfo } from "@src/apis/hooks/useGetAppInfo";
 import { useParams } from "react-router-dom";
 import Loading from "@src/components/common/Loading";
 import GraphCard from "./GraphCard";
+import styled from "@emotion/styled";
 
 export type AppInfoProps = {
   id: number;
@@ -23,12 +24,13 @@ export const AppInfoPage = () => {
   const { data: appInfo, isLoading: isAppInfoLoading, isFetched: isAppInfoFetched } = useGetAppInfo(Number(appId));
   const appInfoData: AppInfoProps = appInfo;
 
-  // console.log(appInfoData);
   if (!isAppInfoLoading && isAppInfoFetched) {
     return (
       <>
-        {appInfoData && <AppInfoCard appInfoData={appInfoData} />}
-        <GraphCard appId={appId} />
+        <Wrapper>
+          {appInfoData && <AppInfoCard appInfoData={appInfoData} />}
+          <GraphCard appId={appId} />
+        </Wrapper>
         <Typo bold style={{ margin: "40px 0 0 30px" }}>
           Release Note
         </Typo>
@@ -39,3 +41,8 @@ export const AppInfoPage = () => {
     return <Loading />;
   }
 };
+
+const Wrapper = styled("div")(() => ({
+  display: "flex",
+  height: "300px",
+}));

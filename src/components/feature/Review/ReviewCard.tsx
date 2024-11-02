@@ -43,7 +43,7 @@ export default function ReviewCard() {
   if (Array.isArray(reviewListData) && !isLoading) {
     return (
       reviewListData && (
-        <Card style={{ margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
+        <Card style={{ margin: "20px 20px", padding: "30px 30px", maxWidth: "1200px" }}>
           <List
             items={reviewListData}
             renderItem={(reviewData: ReviewDataProps) => <Item key={reviewData.reviewId} reviewData={reviewData} />}

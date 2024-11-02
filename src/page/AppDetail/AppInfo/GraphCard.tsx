@@ -15,6 +15,7 @@ import Card from "@src/components/common/Card/Card";
 import { RatingProps } from "@src/types";
 import { useGetRating } from "@src/apis/hooks/useGetRating";
 import Loading from "@src/components/common/Loading";
+// import Typo from "@src/components/common/Typo/Typo";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -62,7 +63,7 @@ export default function GraphCard(appIdData: Props) {
   console.log(ratingData);
 
   const chartRef = useRef<ChartJS<"line">>(null);
-  const [index, setIndex] = useState(0);
+  const [, setIndex] = useState(0);
   const data = {
     labels: datasets.map((data) => data.date),
     datasets: [
@@ -93,8 +94,8 @@ export default function GraphCard(appIdData: Props) {
 
   if (!isRatingLoading) {
     return (
-      <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
-        <h1>'날짜' : {datasets[index].date}</h1>
+      <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px" }}>
+        {/* <Typo>'날짜' : {datasets[index].date}</Typo> */}
         <Line options={options} onClick={getIndex} data={data} ref={chartRef} />
       </Card>
     );
