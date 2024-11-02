@@ -25,6 +25,6 @@ const getReviews = async (params: RequestParams) => {
 
 export const useGetReviews = (params: RequestParams) =>
   useQuery({
-    queryKey: [getReviewsPath],
+    queryKey: [getReviewsPath, "getReviews"],
     queryFn: () => getReviews(params),
   });

@@ -4,6 +4,7 @@ import UpdateCard from "../../../components/feature/Update/UpdateCard";
 import { useGetAppInfo } from "@src/apis/hooks/useGetAppInfo";
 import { useParams } from "react-router-dom";
 import Loading from "@src/components/common/Loading";
+import GraphCard from "./GraphCard";
 
 export type AppInfoProps = {
   id: number;
@@ -18,19 +19,21 @@ export type AppInfoProps = {
 };
 
 export const AppInfoPage = () => {
-  const { appId } = useParams();
-  const { data: appInfo, isLoading: isLoading } = useGetAppInfo(Number(appId));
+  const { appId = "" } = useParams();
+  const { data: appInfo, isLoading: isAppInfoLoading, isFetched: isAppInfoFetched } = useGetAppInfo(Number(appId));
   const appInfoData: AppInfoProps = appInfo;
 
-  if (!isLoading) {
+  // console.log(appInfoData);
+  if (!isAppInfoLoading && isAppInfoFetched) {
     return (
-      <div>
+      <>
         {appInfoData && <AppInfoCard appInfoData={appInfoData} />}
+        <GraphCard appId={appId} />
         <Typo bold style={{ margin: "40px 0 0 30px" }}>
           Release Note
         </Typo>
         <UpdateCard />
-      </div>
+      </>
     );
   } else {
     return <Loading />;

@@ -10,6 +10,6 @@ const getAppInfo = async (app_id: number) => {
 
 export const useGetAppInfo = (app_id: number) =>
   useQuery({
-    queryKey: [getAppInfoPath],
+    queryKey: [getAppInfoPath, "getAppInfo"],
     queryFn: () => getAppInfo(app_id),
   });

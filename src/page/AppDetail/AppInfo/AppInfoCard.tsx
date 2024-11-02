@@ -28,7 +28,7 @@ export default function AppInfoCard({ appInfoData }: Props) {
           <Typo bold size="24px">
             {appInfoData.name}
           </Typo>
-          <Typo size="12px">최근 업데이트 | {appInfoData.recentUpdate.toString()}</Typo>
+          {appInfoData && <Typo size="12px">최근 업데이트 | {appInfoData.recentUpdate.toString()}</Typo>}
         </TitleWrapper>
         <Divider />
         <ContentWrapper>

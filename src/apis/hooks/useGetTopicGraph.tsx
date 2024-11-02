@@ -10,6 +10,6 @@ const getTopicChart = async (app_id: number) => {
 
 export const useGetTopicChart = (app_id: number) =>
   useQuery({
-    queryKey: [getTopicChartPath],
+    queryKey: [getTopicChartPath, "getTopicChart"],
     queryFn: () => getTopicChart(app_id),
   });

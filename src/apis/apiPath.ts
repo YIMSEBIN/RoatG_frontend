@@ -2,6 +2,7 @@ export const APIPath = {
   topicChart: "/api/:appId/topicChart",
   topicChartReview: "/api/:appId/topicReview/:year-month/:topicId",
   appInfo: "/api/meta/:appId",
+  rating: "/api/:appId/rating",
 };
 
 export const getDynamicAPIPath = {
@@ -12,4 +13,5 @@ export const getDynamicAPIPath = {
       .replace(":appId", appId.toString())
       .replace(":year-month", date)
       .replace(":topicId", topicId.toString()),
+  rating: (appId: number) => APIPath.rating.replace(":appId", appId.toString()),
 };

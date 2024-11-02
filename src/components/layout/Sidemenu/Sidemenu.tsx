@@ -3,7 +3,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import styled from "@emotion/styled";
 import { AppInfoPage } from "@src/page/AppDetail/AppInfo/AppInfoPage";
-import { UpdateHistoryPage } from "@src/page/AppDetail/UpdateHistory/UpdateHistoryPage";
 import { TopicPage } from "@src/page/AppDetail/Topic/TopicPage";
 import { SentimentPage } from "@src/page/AppDetail/Sentiment/SentimentPage";
 
@@ -18,20 +17,16 @@ export default function Sidemenu({ ...rest }) {
     <Wrapper {...rest}>
       <SideTaps orientation="vertical" value={value} onChange={handleChange}>
         <Tab label="App Info" {...a11yProps(0)} />
-        <Tab label="Update History" {...a11yProps(1)} />
-        <Tab label="Review Topic" {...a11yProps(2)} />
-        <Tab label="Dashboard" {...a11yProps(3)} />
+        <Tab label="Review Topic" {...a11yProps(1)} />
+        <Tab label="Sentiment Chart" {...a11yProps(2)} />
       </SideTaps>
       <TabPanel value={value} index={0}>
         <AppInfoPage />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <UpdateHistoryPage />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
         <TopicPage />
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={2}>
         <SentimentPage />
       </TabPanel>
     </Wrapper>
