@@ -10,6 +10,6 @@ const getRating = async (appId: number) => {
 
 export const useGetRating = (appId: number) =>
   useQuery({
-    queryKey: [getRatingPath, "getRating"],
+    queryKey: [getRatingPath, "rating"],
     queryFn: () => getRating(appId),
   });
