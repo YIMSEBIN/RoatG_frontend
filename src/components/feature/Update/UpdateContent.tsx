@@ -1,33 +1,20 @@
 import styled from "@emotion/styled";
 import { Divider, List } from "@mui/material";
 import Typo from "@src/components/common/Typo/Typo";
+import { UpdateAPIProps } from "@src/types";
 
-export type UpdateDataProps = {
-  updateDate: string;
-  version: string;
-  content: string;
-};
-
-export type UpdateDataListProps = {
-  updateDataList: UpdateDataProps[];
-};
-
-export default function UpdateContent({ updateDataList }: UpdateDataListProps) {
+export default function UpdateContent({ updateDataList }: { updateDataList: UpdateAPIProps[] }) {
   return (
     <List dense sx={{ width: "100%" }}>
-      {updateDataList.map((updateData) => {
+      {updateDataList.map((updateData: UpdateAPIProps) => {
         return <Item updateData={updateData} />;
       })}
     </List>
   );
 }
 
-type Props = {
-  updateData: UpdateDataProps;
-};
-
-function Item({ updateData }: Props) {
-  const { updateDate, version, content } = updateData;
+function Item({ updateData }: { updateData: UpdateAPIProps }) {
+  const { date, version, content } = updateData;
   return (
     <ItemWrapper>
       <SideWrapper>
@@ -37,7 +24,7 @@ function Item({ updateData }: Props) {
         </TextWrapper>
         <TextWrapper>
           <Typo>update Date</Typo>
-          <Typo>{updateDate}</Typo>
+          <Typo>{date}</Typo>
         </TextWrapper>
       </SideWrapper>
       <Divider orientation="vertical" variant="middle" flexItem />

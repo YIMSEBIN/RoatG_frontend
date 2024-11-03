@@ -6,6 +6,7 @@ export const APIPath = {
   sentiCount: "/api/:appId/count/sentimentScore/:year-month",
   sentiAvg: "/api/:appId/avgSentiment/month",
   sentiString: "/api/:appId/emotion/:year-month",
+  update: "/api/:appId/update",
 };
 
 export const getDynamicAPIPath = {
@@ -26,4 +27,5 @@ export const getDynamicAPIPath = {
   sentiAvg: (appId: number) => APIPath.sentiAvg.replace(":appId", appId.toString()),
   sentiString: (appId: number, date: string) =>
     APIPath.sentiString.replace(":appId", appId.toString()).replace(":year-month", date),
+  update: (appId: number) => APIPath.update.replace(":appId", appId.toString()),
 };

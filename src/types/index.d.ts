@@ -30,3 +30,9 @@ export type SentiStringAPIProps = {
   count: number;
   emotion: number;
 };
+
+export type UpdateAPIProps = {
+  version: string;
+  date: string;
+  content: string;
+};
