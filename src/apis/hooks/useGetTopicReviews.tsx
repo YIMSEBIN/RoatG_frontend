@@ -23,7 +23,6 @@ const getTopicReviews = async (params: RequestParams) => {
 };
 
 export const useGetTopicReviews = (params: RequestParams) => {
-  console.log(params);
   return useQuery({
     queryKey: [params, "getTopicReviews"],
     queryFn: () => getTopicReviews(params),

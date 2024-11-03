@@ -12,8 +12,9 @@ const getSentiAvg = async (param: RequestParams) => {
   return res.data;
 };
 
-export const useGetSentiAvg = (param: RequestParams) =>
-  useQuery({
-    queryKey: [getSentiAvgPath, "getSentiAvg"],
+export const useGetSentiAvg = (param: RequestParams) => {
+  return useQuery({
+    queryKey: [param, "getSentiAvg"],
     queryFn: () => getSentiAvg(param),
   });
+};

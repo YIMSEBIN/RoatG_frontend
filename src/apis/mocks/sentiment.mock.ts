@@ -2,11 +2,12 @@ import { http, HttpResponse } from "msw";
 import { SentiAvgAPIProps, SentiCountAPIProps, SentiStringAPIProps } from "@src/types";
 import { getSentiCountPath } from "../hooks/useGetSentiCount";
 import { getSentiAvgPath } from "../hooks/useGetSentiAvg";
+import { getSentiStringPath } from "../hooks/useGetSentiString";
 
 export const sentimentMockHandler = [
   http.get(getSentiCountPath({ appId: 1, date: "2024-1" }), () => HttpResponse.json(SENTI_COUNT_DATA)),
   http.get(getSentiAvgPath({ appId: 1 }), () => HttpResponse.json(SENTI_AVG_DATA)),
-  http.get(getSentiCountPath({ appId: 1, date: "2024-1" }), () => HttpResponse.json(SENTI_STRING_DATA)),
+  http.get(getSentiStringPath({ appId: 1, date: "2024-1" }), () => HttpResponse.json(SENTI_STRING_DATA)),
 ];
 
 const SENTI_COUNT_DATA: SentiCountAPIProps = {

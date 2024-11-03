@@ -13,8 +13,9 @@ const getSentiCount = async (param: RequestParams) => {
   return res.data;
 };
 
-export const useGetSentiCount = (param: RequestParams) =>
-  useQuery({
-    queryKey: [getSentiCountPath, "getSentiCount"],
+export const useGetSentiCount = (param: RequestParams) => {
+  return useQuery({
+    queryKey: [param, "getSentiCount"],
     queryFn: () => getSentiCount(param),
   });
+};

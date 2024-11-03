@@ -1,6 +1,6 @@
 import Typo from "@src/components/common/Typo/Typo";
 import GraphCard from "./GraphCard";
-import ReviewCard from "../../../components/feature/Review/ReviewCard";
+// import SentiReviewCard from "./SentiReviewCard";
 
 export const SentimentPage = () => {
   return (
@@ -12,7 +12,7 @@ export const SentimentPage = () => {
       <Typo bold style={{ margin: "40px 0 0 30px" }}>
         Review
       </Typo>
-      <ReviewCard />
+      {/* <SentiReviewCard /> */}
     </div>
   );
 };

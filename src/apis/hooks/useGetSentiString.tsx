@@ -13,8 +13,9 @@ const getSentiString = async (param: RequestParams) => {
   return res.data;
 };
 
-export const useGetSentiString = (param: RequestParams) =>
-  useQuery({
-    queryKey: [getSentiStringPath, "getSentiString"],
+export const useGetSentiString = (param: RequestParams) => {
+  return useQuery({
+    queryKey: [param, "getSentiString"],
     queryFn: () => getSentiString(param),
   });
+};
