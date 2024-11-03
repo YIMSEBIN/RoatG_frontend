@@ -18,4 +18,8 @@ export default defineConfig({
       },
     ],
   },
+  base: "/frontend/",
+  build: {
+    outDir: "build", // 빌드 폴더를 'build'로 설정
+  },
 });

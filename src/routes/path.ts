@@ -1,5 +1,5 @@
 export const RouterPath = {
-  root: "/",
+  root: "/frontend/",
   home: "/",
   app: "",
   appInfo: "/appInfo/:appId",
