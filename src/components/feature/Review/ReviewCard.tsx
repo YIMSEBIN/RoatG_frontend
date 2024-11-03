@@ -6,6 +6,7 @@ import Loading from "@src/components/common/Loading";
 import List from "@src/components/common/List/List";
 import { useParams } from "react-router-dom";
 import { TopicContext, TopicContextType } from "@src/page/AppDetail/Topic/TopicPage";
+import Typo from "@src/components/common/Typo/Typo";
 
 export type ReviewDataProps = {
   reviewId: number;
@@ -33,9 +34,6 @@ export default function ReviewCard() {
   const { appId } = useParams();
   const id = Number(appId);
   const date = localStorage.getItem("monthChoice") || "2024-1";
-  // const topicId = localStorage.getItem("currentTopic") || "1"; // localStorage에서 topicId를 가져옵니다.
-
-  console.log("ㅋㅋ", topic);
 
   const { data: reviewData, isLoading: isLoading } = useGetTopicReviews({
     page: currentPage,
@@ -53,18 +51,21 @@ export default function ReviewCard() {
 
   if (Array.isArray(reviewData) && !isLoading) {
     const reviewListData: ReviewDataProps[] = reviewData;
-    console.log("?");
-    console.log(reviewListData);
-    console.log(reviewData);
     return (
       reviewListData && (
-        <Card style={{ margin: "20px 20px", padding: "30px 30px", maxWidth: "1200px" }}>
+        <Card style={{ margin: "20px 20px", padding: "30px 30px", maxWidth: "1200px", minWidth: "1200px" }}>
           <ReviewHeader />
           <List
             items={reviewListData}
             renderItem={(reviewData: ReviewDataProps) => <Item key={reviewData.reviewId} reviewData={reviewData} />}
           />
-          <Pagination page={currentPage} count={LAST_PAGE} defaultPage={DEFAULT_PAGE} onChange={handlePageChange} />
+          <Pagination
+            page={currentPage}
+            count={LAST_PAGE}
+            defaultPage={DEFAULT_PAGE}
+            onChange={handlePageChange}
+            style={{ marginTop: "20px" }}
+          />
         </Card>
       )
     );
@@ -81,10 +82,18 @@ function Item({ reviewData }: Props) {
   const { userName, date, content, rating } = reviewData;
   return (
     <ItemWrapper>
-      <TextWrapper width="15%">{userName}</TextWrapper>
-      <TextWrapper width="15%">{date.toString()}</TextWrapper>
-      <TextWrapper width="10%">{rating}</TextWrapper>
-      <TextWrapper width="60%">{content}</TextWrapper>
+      <TextWrapper width="15%">
+        <Typo>{userName}</Typo>
+      </TextWrapper>
+      <TextWrapper width="15%">
+        <Typo>{new Date(date).toLocaleDateString()}</Typo>
+      </TextWrapper>
+      <TextWrapper width="10%">
+        <Typo>{rating}</Typo>
+      </TextWrapper>
+      <TextWrapper width="60%">
+        <Typo>{content}</Typo>
+      </TextWrapper>
     </ItemWrapper>
   );
 }
@@ -111,10 +120,18 @@ function ReviewHeader() {
         paddingBottom: "5px", // 경계선과 텍스트 사이 간격
       }}
     >
-      <TextWrapper width="15%">작성자</TextWrapper>
-      <TextWrapper width="15%">작성날짜</TextWrapper>
-      <TextWrapper width="10%">별점</TextWrapper>
-      <TextWrapper width="60%">내용</TextWrapper>
+      <TextWrapper width="15%">
+        <Typo bold>작성자</Typo>
+      </TextWrapper>
+      <TextWrapper width="15%">
+        <Typo bold>작성날짜</Typo>
+      </TextWrapper>
+      <TextWrapper width="10%">
+        <Typo bold>별점</Typo>
+      </TextWrapper>
+      <TextWrapper width="60%">
+        <Typo bold>내용</Typo>
+      </TextWrapper>
     </ItemWrapper>
   );
 }

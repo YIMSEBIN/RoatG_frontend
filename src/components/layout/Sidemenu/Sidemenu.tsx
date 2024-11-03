@@ -72,5 +72,5 @@ const Wrapper = styled("div")(() => ({
 
 const SideTaps = styled(Tabs)(() => ({
   backgroundColor: "white",
-  padding: "30px 0 500px 0",
+  padding: "30px 0 0 0",
 }));

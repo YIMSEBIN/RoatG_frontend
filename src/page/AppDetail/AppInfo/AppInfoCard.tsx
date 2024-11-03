@@ -12,20 +12,26 @@ type Props = {
 export default function AppInfoCard({ appInfoData }: Props) {
   return (
     <Card style={{ display: "flex", margin: "20px 20px", padding: "30px 30px" }}>
-      <Image
-        url={appInfoData.banner}
+      <div
         style={{
+          width: "200px",
           marginRight: "20px",
         }}
-        size={{
-          width: "200px",
-          height: "",
-        }}
-      />
+      >
+        <Image
+          url={appInfoData.banner}
+          size={{
+            width: "200px",
+            height: "200px",
+          }}
+        />
+      </div>
       <TextWrapper>
         <TitleWrapper>
-          <Typo size="12px">{appInfoData.publisher}</Typo>
-          <Typo bold size="24px">
+          <Typo size="12px" style={{ marginBottom: "3px" }}>
+            {appInfoData.publisher}
+          </Typo>
+          <Typo bold size="24px" style={{ marginBottom: "10px" }}>
             {appInfoData.name}
           </Typo>
           {appInfoData && <Typo size="12px">최근 업데이트 | {appInfoData.recentUpdate.toString()}</Typo>}
@@ -54,8 +60,14 @@ export default function AppInfoCard({ appInfoData }: Props) {
   );
 }
 
-const TextWrapper = styled("div")(() => ({}));
-const TitleWrapper = styled("div")(() => ({ margin: "20px 0" }));
+const TextWrapper = styled("div")(() => ({
+  display: "flex",
+  flexDirection: "column" as const,
+  justifyContent: "center",
+}));
+const TitleWrapper = styled("div")(() => ({
+  margin: "20px 0",
+}));
 const ContentWrapper = styled("div")(() => ({ margin: "20px 0", display: "flex" }));
 const ScoreWrapper = styled("div")(() => ({
   marginRight: "40px",

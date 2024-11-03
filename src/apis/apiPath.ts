@@ -1,7 +1,7 @@
 export const APIPath = {
   topicChart: "/api/:appId/topicChart/:sentiment/:year-month",
   topicChartReview: "/api/:appId/topicReview/:year-month/:topicId",
-  appInfo: "/api/meta/:appId",
+  appInfo: "/api/:appId/meta",
   rating: "/api/:appId/rating",
   sentiCount: "/api/:appId/count/sentimentScore/:year-month",
   sentiAvg: "/api/:appId/avgSentiment/month",

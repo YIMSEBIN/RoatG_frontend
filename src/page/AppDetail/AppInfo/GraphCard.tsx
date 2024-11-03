@@ -43,9 +43,9 @@ export default function GraphCard({ appId }: { appId: string }) {
       datasets: [
         {
           data: ratingDataSets.map((data) => data.rate),
-          borderColor: "rgb(255, 99, 132)",
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
-          pointBackgroundColor: ratingDataSets.map(() => "red"),
+          borderColor: "#fff700",
+          backgroundColor: "#fff700",
+          pointBackgroundColor: ratingDataSets.map(() => "orange"),
           pointRadius: 8,
         },
       ],

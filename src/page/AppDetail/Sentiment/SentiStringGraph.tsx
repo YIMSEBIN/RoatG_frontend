@@ -29,8 +29,24 @@ export default function SentiStringGraph({ appId, date }: { appId: number; date:
       datasets: [
         {
           data: count,
-          backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(255, 206, 86, 0.2)", "rgba(54, 162, 235, 0.2)"],
-          borderColor: ["rgba(255, 99, 132, 1)", "rgba(255, 206, 86, 1)", "rgba(54, 162, 235, 1)"],
+          backgroundColor: [
+            "rgba(0, 57, 255, 0.2)",
+            "rgba(0, 223, 255, 0.6)",
+            "rgba(255, 99, 132, 0.6)",
+            "rgba(7, 130, 255, 0.2)",
+            "rgba(255, 175, 14, 0.2)",
+            "rgba(0, 207, 73, 0.2)",
+            "rgba(82, 8, 255, 0.2)",
+          ],
+          borderColor: [
+            "rgba(0, 57, 255, 1)",
+            "rgba(0, 223, 255, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(7, 130, 255, 1)",
+            "rgba(255, 175, 14, 1)",
+            "rgba(0, 207, 73, 1)",
+            "rgba(82, 8, 255, 0.5)",
+          ],
           borderWidth: 1,
         },
       ],

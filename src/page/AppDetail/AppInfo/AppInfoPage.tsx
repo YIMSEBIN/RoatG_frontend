@@ -31,7 +31,7 @@ export const AppInfoPage = () => {
           {appInfoData && <AppInfoCard appInfoData={appInfoData} />}
           <GraphCard appId={appId} />
         </Wrapper>
-        <Typo bold style={{ margin: "40px 0 0 30px" }}>
+        <Typo bold style={{ margin: "20px 0 0 30px" }}>
           Release Note
         </Typo>
         <UpdateCard />

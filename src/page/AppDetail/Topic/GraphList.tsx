@@ -74,7 +74,7 @@ export default function GraphList({ topicChartListData }: { topicChartListData: 
               display: "flex",
               margin: "20px 0 0 20px",
               padding: "20px 20px",
-              border: selectedTopicId === topicId ? "2px solid blue" : "1px solid grey", // 선택된 카드에 특별한 테두리 적용
+              border: selectedTopicId === topicId ? "3px solid #4f75ff" : "1px solid grey", // 선택된 카드에 특별한 테두리 적용
               backgroundColor: selectedTopicId === topicId ? "#e6f7ff" : "", // 선택된 카드에 배경색 변경
               cursor: "pointer",
             }}
@@ -88,4 +88,9 @@ export default function GraphList({ topicChartListData }: { topicChartListData: 
   );
 }
 
-const Wrapper = styled("div")(() => ({ display: "flex", justifyContent: "space-between" }));
+const Wrapper = styled("div")(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  maxWidth: "1200px",
+  minWidth: "1200px",
+}));
