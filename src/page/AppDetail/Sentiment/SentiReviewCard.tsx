@@ -1,11 +1,11 @@
 import Card from "@src/components/common/Card/Card";
 import { Pagination, styled } from "@mui/material";
 import { useContext, useState } from "react";
-import { useGetTopicReviews } from "@src/apis/hooks/useGetTopicReviews";
 import Loading from "@src/components/common/Loading";
 import List from "@src/components/common/List/List";
 import { useParams } from "react-router-dom";
-import { TopicContext, TopicContextType } from "@src/page/AppDetail/Topic/TopicPage";
+import { SentiContext, SentiContextType } from "./SentimentPage";
+import { useGetSentiReviews } from "@src/apis/hooks/useGetSentiReviews";
 
 export type ReviewDataProps = {
   reviewId: number;
@@ -21,28 +21,23 @@ const DEFAULT_PAGE = 1;
 const REVIEW_SIZE = 3;
 
 export default function ReviewCard() {
-  const context = useContext(TopicContext);
+  const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
+  const context = useContext(SentiContext);
 
   if (!context) {
     throw new Error("MyConsumer must be used within a MyProvider");
   }
 
-  const { value: topic }: TopicContextType = context;
+  const { senti }: SentiContextType = context;
 
-  const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
+  console.log(senti);
   const { appId } = useParams();
   const id = Number(appId);
-  const date = localStorage.getItem("monthChoice") || "2024-1";
-  // const topicId = localStorage.getItem("currentTopic") || "1"; // localStorage에서 topicId를 가져옵니다.
-
-  console.log("ㅋㅋ", topic);
-
-  const { data: reviewData, isLoading: isLoading } = useGetTopicReviews({
+  const { data: reviewData, isLoading: isLoading } = useGetSentiReviews({
     page: currentPage,
     size: REVIEW_SIZE,
     appId: id,
-    date: date,
-    topicId: Number(topic),
+    sentiId: Number(senti),
   });
 
   const handlePageChange = (e: React.ChangeEvent<unknown>) => {
@@ -78,13 +73,11 @@ type Props = {
 };
 
 function Item({ reviewData }: Props) {
-  const { userName, date, content, rating } = reviewData;
+  const { date, content } = reviewData;
   return (
     <ItemWrapper>
-      <TextWrapper width="15%">{userName}</TextWrapper>
-      <TextWrapper width="15%">{date.toString()}</TextWrapper>
-      <TextWrapper width="10%">{rating}</TextWrapper>
-      <TextWrapper width="60%">{content}</TextWrapper>
+      <TextWrapper width="20%">{date.toString()}</TextWrapper>
+      <TextWrapper width="80%">{content}</TextWrapper>
     </ItemWrapper>
   );
 }
@@ -111,10 +104,8 @@ function ReviewHeader() {
         paddingBottom: "5px", // 경계선과 텍스트 사이 간격
       }}
     >
-      <TextWrapper width="15%">작성자</TextWrapper>
-      <TextWrapper width="15%">작성날짜</TextWrapper>
-      <TextWrapper width="10%">별점</TextWrapper>
-      <TextWrapper width="60%">내용</TextWrapper>
+      <TextWrapper width="20%">작성날짜</TextWrapper>
+      <TextWrapper width="80%">내용</TextWrapper>
     </ItemWrapper>
   );
 }

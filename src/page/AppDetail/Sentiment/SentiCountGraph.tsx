@@ -3,23 +3,19 @@ import Card from "@src/components/common/Card/Card";
 import Loading from "@src/components/common/Loading";
 import { SentiCountAPIProps } from "@src/types";
 import { Bar } from "react-chartjs-2";
-
-const options = {
-  maintainAspectRatio: true, // 캔버스의 가로세로 비율 유지 여부
-  aspectRatio: 1, // maintainAspectRatio가 true일 때 사용되는 비율
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-};
+import { useContext } from "react";
+import { ChartEvent, ActiveElement } from "chart.js";
+import { SentiContext, SentiContextType } from "./SentimentPage";
 
 export default function SentiCountGraph({ appId, date }: { appId: number; date: string }) {
+  const context = useContext(SentiContext);
+
+  if (!context) {
+    throw new Error("SentiCountGraph must be used within a SentiProvider");
+  }
+
+  const { setSenti }: SentiContextType = context;
+
   const { data: graphData, isLoading } = useGetSentiCount({ appId, date });
   if (graphData && !isLoading) {
     const sentiCountData: SentiCountAPIProps = graphData;
@@ -37,6 +33,29 @@ export default function SentiCountGraph({ appId, date }: { appId: number; date: 
           borderWidth: 1,
         },
       ],
+    };
+
+    const options = {
+      maintainAspectRatio: true,
+      aspectRatio: 1,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      // onClick 위치를 올바르게 설정
+      onClick: (event: ChartEvent, elements: ActiveElement[]) => {
+        if (elements.length > 0) {
+          const firstElementIndex = elements[0].index;
+          setSenti(firstElementIndex); // 상태 업데이트 함수 호출
+          console.log("Clicked element index:", firstElementIndex); // 클릭된 요소 인덱스 로깅
+        }
+      },
     };
 
     return (

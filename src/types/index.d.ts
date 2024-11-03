@@ -36,3 +36,8 @@ export type UpdateAPIProps = {
   date: string;
   content: string;
 };
+
+export type SentiReviewAPIProps = {
+  date: Date;
+  content: string;
+};

@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 import { ReviewDataProps } from "@src/components/feature/Review/ReviewCard";
 import { getTopicReviewsPath } from "../hooks/useGetTopicReviews";
 
-export const reviewsMockHandler = [
+export const topicReviewsMockHandler = [
   http.get(getTopicReviewsPath({ appId: 1, date: "2024-1", topicId: 29 }), () => HttpResponse.json(REVIEW_DATA1)),
   http.get(getTopicReviewsPath({ appId: 1, date: "2024-1", topicId: 30 }), () => HttpResponse.json(REVIEW_DATA2)),
   http.get(getTopicReviewsPath({ appId: 1, date: "2024-1", topicId: 31 }), () => HttpResponse.json(REVIEW_DATA3)),
