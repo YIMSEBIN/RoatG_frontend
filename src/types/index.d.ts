@@ -7,7 +7,7 @@ export type RatingDataProps = {
   ratingData: RatingProps;
 };
 
-export type TopicChartProps = {
+export type TopicChartAPIProps = {
   topicId: number;
   ranking: number;
   representationWord: string;

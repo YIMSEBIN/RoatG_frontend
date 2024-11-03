@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-interface Props<T> {
+type Props<T> = {
   items: T[];
-  renderItem: (item: T) => ReactNode;
-}
+  renderItem: (item: T, index: number) => ReactNode;
+} & HTMLAttributes<HTMLDivElement>;
 
 export default function List<T>({ items = [], renderItem }: Props<T>) {
-  return <>{items.map(renderItem)}</>;
+  return <>{items.map((item, index) => renderItem(item, index))}</>;
 }

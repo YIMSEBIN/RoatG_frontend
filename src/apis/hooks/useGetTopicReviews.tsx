@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { clientInstance } from "../instance";
 import { getDynamicAPIPath } from "../apiPath";
-
 type RequestParams = {
   page?: number;
   size?: number;
@@ -10,7 +9,7 @@ type RequestParams = {
   topicId: number;
 };
 
-export const getReviewsPath = ({ page = 0, size = 3, appId = 1, date = "2024-1", topicId = 1 }: RequestParams) => {
+export const getTopicReviewsPath = ({ page = 0, size = 3, appId = 1, date = "2024-1", topicId = 1 }: RequestParams) => {
   const url = getDynamicAPIPath.topicChartReview(appId, date, topicId);
   const params = new URLSearchParams();
   params.append("page", String(page));
@@ -18,13 +17,15 @@ export const getReviewsPath = ({ page = 0, size = 3, appId = 1, date = "2024-1",
 
   return `${url}?${params.toString()}`;
 };
-const getReviews = async (params: RequestParams) => {
-  const res = await clientInstance.get(getReviewsPath(params));
+const getTopicReviews = async (params: RequestParams) => {
+  const res = await clientInstance.get(getTopicReviewsPath(params));
   return res.data;
 };
 
-export const useGetReviews = (params: RequestParams) =>
-  useQuery({
-    queryKey: [getReviewsPath, "getReviews"],
-    queryFn: () => getReviews(params),
+export const useGetTopicReviews = (params: RequestParams) => {
+  console.log(params);
+  return useQuery({
+    queryKey: [params, "getTopicReviews"],
+    queryFn: () => getTopicReviews(params),
   });
+};

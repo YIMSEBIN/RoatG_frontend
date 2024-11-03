@@ -1,9 +1,11 @@
 import Card from "@src/components/common/Card/Card";
 import { Pagination, styled } from "@mui/material";
-import { useState } from "react";
-import { useGetReviews } from "@src/apis/hooks/useGetReviews";
+import { useContext, useState } from "react";
+import { useGetTopicReviews } from "@src/apis/hooks/useGetTopicReviews";
 import Loading from "@src/components/common/Loading";
 import List from "@src/components/common/List/List";
+import { useParams } from "react-router-dom";
+import { TopicContext, TopicContextType } from "@src/page/AppDetail/Topic/TopicPage";
 
 export type ReviewDataProps = {
   reviewId: number;
@@ -16,22 +18,32 @@ export type ReviewDataProps = {
 
 const LAST_PAGE = 5;
 const DEFAULT_PAGE = 1;
+const REVIEW_SIZE = 3;
 
 export default function ReviewCard() {
+  const context = useContext(TopicContext);
+
+  if (!context) {
+    throw new Error("MyConsumer must be used within a MyProvider");
+  }
+
+  const { value: topic }: TopicContextType = context;
+
   const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
+  const { appId } = useParams();
+  const id = Number(appId);
+  const date = localStorage.getItem("monthChoice") || "2024-1";
+  // const topicId = localStorage.getItem("currentTopic") || "1"; // localStorage에서 topicId를 가져옵니다.
 
-  const appId = 1;
-  const date = "2024-1";
+  console.log("ㅋㅋ", topic);
 
-  const { data: reviewData = [], isLoading: isLoading } = useGetReviews({
+  const { data: reviewData, isLoading: isLoading } = useGetTopicReviews({
     page: currentPage,
-    size: 3,
-    appId,
-    date,
-    topicId: 1,
+    size: REVIEW_SIZE,
+    appId: id,
+    date: date,
+    topicId: Number(topic),
   });
-
-  const reviewListData: ReviewDataProps[] = reviewData;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>) => {
     const input = e.target as HTMLElement;
@@ -39,7 +51,11 @@ export default function ReviewCard() {
     setCurrentPage(currentPageIndex);
   };
 
-  if (Array.isArray(reviewListData) && !isLoading) {
+  if (Array.isArray(reviewData) && !isLoading) {
+    const reviewListData: ReviewDataProps[] = reviewData;
+    console.log("?");
+    console.log(reviewListData);
+    console.log(reviewData);
     return (
       reviewListData && (
         <Card style={{ margin: "20px 20px", padding: "30px 30px", maxWidth: "1200px" }}>
@@ -65,10 +81,10 @@ function Item({ reviewData }: Props) {
   const { userName, date, content, rating } = reviewData;
   return (
     <ItemWrapper>
-      <TextWrapper width="25%">{userName}</TextWrapper>
-      <TextWrapper width="25%">{date.toString()}</TextWrapper>
-      <TextWrapper width="25%">{rating}</TextWrapper>
-      <TextWrapper width="25%">{content}</TextWrapper>
+      <TextWrapper width="15%">{userName}</TextWrapper>
+      <TextWrapper width="15%">{date.toString()}</TextWrapper>
+      <TextWrapper width="10%">{rating}</TextWrapper>
+      <TextWrapper width="60%">{content}</TextWrapper>
     </ItemWrapper>
   );
 }
@@ -95,10 +111,10 @@ function ReviewHeader() {
         paddingBottom: "5px", // 경계선과 텍스트 사이 간격
       }}
     >
-      <TextWrapper width="25%">작성자</TextWrapper>
-      <TextWrapper width="25%">작성날짜</TextWrapper>
-      <TextWrapper width="25%">별점</TextWrapper>
-      <TextWrapper width="25%">내용</TextWrapper>
+      <TextWrapper width="15%">작성자</TextWrapper>
+      <TextWrapper width="15%">작성날짜</TextWrapper>
+      <TextWrapper width="10%">별점</TextWrapper>
+      <TextWrapper width="60%">내용</TextWrapper>
     </ItemWrapper>
   );
 }
