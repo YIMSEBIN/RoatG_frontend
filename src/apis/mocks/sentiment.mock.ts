@@ -19,13 +19,28 @@ const SENTI_COUNT_DATA: SentiCountAPIProps = {
 const SENTI_AVG_DATA: SentiAvgAPIProps[] = [
   {
     year: "2024",
-    month: "1",
+    month: "4",
     averageSentiment: -0.0633,
   },
   {
     year: "2024",
-    month: "2",
+    month: "5",
     averageSentiment: -0.1357,
+  },
+  {
+    year: "2024",
+    month: "6",
+    averageSentiment: 0.2625,
+  },
+  {
+    year: "2024",
+    month: "7",
+    averageSentiment: -0.6536,
+  },
+  {
+    year: "2024",
+    month: "8",
+    averageSentiment: -0.4145,
   },
 ];
 

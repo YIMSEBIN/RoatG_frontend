@@ -6,6 +6,7 @@ import List from "@src/components/common/List/List";
 import { useParams } from "react-router-dom";
 import { SentiContext, SentiContextType } from "./SentimentPage";
 import { useGetSentiReviews } from "@src/apis/hooks/useGetSentiReviews";
+import Typo from "@src/components/common/Typo/Typo";
 
 export type ReviewDataProps = {
   reviewId: number;
@@ -76,8 +77,12 @@ function Item({ reviewData }: Props) {
   const { date, content } = reviewData;
   return (
     <ItemWrapper>
-      <TextWrapper width="20%">{date.toString()}</TextWrapper>
-      <TextWrapper width="80%">{content}</TextWrapper>
+      <TextWrapper width="20%">
+        <Typo>{new Date(date).toLocaleDateString()}</Typo>
+      </TextWrapper>
+      <TextWrapper width="80%">
+        <Typo>{content}</Typo>
+      </TextWrapper>
     </ItemWrapper>
   );
 }
@@ -104,8 +109,12 @@ function ReviewHeader() {
         paddingBottom: "5px", // 경계선과 텍스트 사이 간격
       }}
     >
-      <TextWrapper width="20%">작성날짜</TextWrapper>
-      <TextWrapper width="80%">내용</TextWrapper>
+      <TextWrapper width="20%">
+        <Typo bold>작성날짜</Typo>
+      </TextWrapper>
+      <TextWrapper width="80%">
+        <Typo bold>내용</Typo>
+      </TextWrapper>
     </ItemWrapper>
   );
 }
