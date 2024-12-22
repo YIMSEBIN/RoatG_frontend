@@ -1,8 +1,8 @@
 import axios from "axios";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 
-// const BASE_URL = import.meta.env.VITE_BASE_URL;
-const BASE_URL = "https://54a4-2001-e60-9141-92a3-948e-8db5-8ed9-ab1f.ngrok-free.app";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+// const BASE_URL = "http://35.225.167.203:8080/";
 
 const createInstance = () => {
   const instance = axios.create({

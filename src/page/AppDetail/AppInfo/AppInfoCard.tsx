@@ -34,7 +34,9 @@ export default function AppInfoCard({ appInfoData }: Props) {
           <Typo bold size="24px" style={{ marginBottom: "10px" }}>
             {appInfoData.name}
           </Typo>
-          {appInfoData && <Typo size="12px">최근 업데이트 | {appInfoData.recentUpdate.toString()}</Typo>}
+          {appInfoData && (
+            <Typo size="12px">최근 업데이트 | {new Date(appInfoData.recentUpdate).toLocaleDateString()}</Typo>
+          )}
         </TitleWrapper>
         <Divider />
         <ContentWrapper>

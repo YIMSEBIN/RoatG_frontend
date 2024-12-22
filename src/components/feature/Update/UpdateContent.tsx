@@ -17,7 +17,7 @@ export default function UpdateContent({ updateDataList }: { updateDataList: Upda
 function Item({ updateData }: { updateData: UpdateAPIProps }) {
   const { date, version, content } = updateData;
   return (
-    <Card style={{ margin: "20px 20px", padding: "30px 30px", minWidth: "880px" }}>
+    <Card style={{ margin: "20px 20px", padding: "30px 30px", maxWidth: "1200px", minWidth: "1200px" }}>
       <ItemWrapper>
         <SideWrapper>
           <TextWrapper style={{ marginBottom: "10px" }}>
@@ -43,7 +43,8 @@ const ItemWrapper = styled("div")(() => ({
   width: "100%",
 }));
 const SideWrapper = styled("div")(() => ({
-  width: "150px",
+  maxWidth: "150px",
+  minWidth: "150px",
 }));
 const TextWrapper = styled("div")(() => ({}));
 const ContentWrapper = styled("div")(() => ({ padding: "10px 20px" }));
