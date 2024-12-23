@@ -1,0 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
+import { clientInstance } from "../instance";
+import { getDynamicAPIPath } from "../apiPath";
+
+type RequestParams = {
+  appId: number;
+};
+
+export const getSentiAvgPath = ({ appId }: RequestParams) => `${getDynamicAPIPath.sentiAvg(appId)}`;
+const getSentiAvg = async (param: RequestParams) => {
+  const res = await clientInstance.get(getSentiAvgPath(param));
+  return res.data;
+};
+
+export const useGetSentiAvg = (param: RequestParams) => {
+  return useQuery({
+    queryKey: [param, "getSentiAvg"],
+    queryFn: () => getSentiAvg(param),
+  });
+};
