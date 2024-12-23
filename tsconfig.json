@@ -27,5 +27,5 @@
       "@assets/*": ["src/assets/*"]
     }
   },
-  "include": ["src", "src/index.tsx"]
+  "include": ["src", "src/main.tsx"]
 }

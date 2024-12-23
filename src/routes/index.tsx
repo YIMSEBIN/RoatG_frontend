@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { RouterPath } from "@src/routes/path";
 import { AppInfoPage } from "@src/page/AppDetail/AppInfo/AppInfoPage";
 import MainPage from "@src/page/Main/MainPage";
@@ -6,7 +6,7 @@ import { TopicPage } from "@src/page/AppDetail/Topic/TopicPage";
 import AppPage from "@src/page/AppDetail/AppPage";
 import { SentimentPage } from "@src/page/AppDetail/Sentiment/SentimentPage";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: RouterPath.root,
     children: [
